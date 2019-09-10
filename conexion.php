@@ -1,6 +1,6 @@
 <?php
-
-   $connection = mysqli_connect(
+//ejecutamos codigo de php para insertar la conexion de mysql
+   $connection = mysqli_connect( //los parametros donde me quiero conectar. Se guarda en una variable.
        'localhost',
        'root',
        '',
