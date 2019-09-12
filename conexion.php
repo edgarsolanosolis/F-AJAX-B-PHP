@@ -8,8 +8,8 @@
        'apptareas.bd'
    );
 
-   if($connection){
-       echo "Base de datos conectada";
-   }
+  // if($connection){           ESTO ES PARA SABER SI LA CONEXION A LA BD FUNCIONA
+ //      echo "Base de datos conectada";
+ //  }
 
 ?>
