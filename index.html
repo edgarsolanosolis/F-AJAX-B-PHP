@@ -26,7 +26,8 @@
             </form>
         </ul>
     </nav>
-    <div class="container">
+    <!- Interfaz de agrgar nombre de tarea y descripcion->
+    <div class="container p-4">
         <div class="row">
             <div class="col-md-5">
                 <div class="card">
@@ -46,7 +47,16 @@
                 </div>
             </div>
             <div class="col-md-7">
-
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Nombre</td>
+                            <td>Descripción</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tasks"></tbody>
+                </table>
             </div>
         </div>
     </div>
