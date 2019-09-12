@@ -26,4 +26,13 @@ $(document).ready(function() {
         }
     });
 
+    $('#task-form').submit(function(e){
+        const postData = {
+            name: $('#name').val(),
+            description: $('#description').val()
+        };
+        console.log(postData)
+        e.preventDefault();
+    });
+
 });
