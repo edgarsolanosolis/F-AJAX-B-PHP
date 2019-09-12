@@ -1,6 +1,7 @@
 <?php
 //ejecutamos codigo de php para insertar la conexion de mysql
-   $connection = mysqli_connect( //los parametros donde me quiero conectar. Se guarda en una variable.
+//los parametros donde me quiero conectar. Se guarda en una variable.
+   $connection = mysqli_connect( 
        'localhost',
        'root',
        '',
@@ -8,7 +9,7 @@
    );
 
    if($connection){
-       echo "Base de datos conectada"
+       echo "Base de datos conectada";
    }
 
 ?>
