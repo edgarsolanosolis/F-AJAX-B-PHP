@@ -49,10 +49,15 @@ $(document).ready(function() {
                 let template = '';
                 tasks.forEach(task => {
                     template += `
-                        <tr>
+                        <tr taskId="${task.id}">
                             <td>${task.id}</td>
                             <td>${task.name}</td>
                             <td>${task.description}</td>
+                            <td>
+                                <button class="task-delete btn btn-danger">
+                                    Eliminar
+                                </button>
+                            </td>
                         </tr>
                     `
                 });
@@ -60,4 +65,14 @@ $(document).ready(function() {
             }
         });
     }
+    $(document).on('click', '.task-delete', function (){
+        if(confirm('¿Estás seguro que deseas eliminar la tárea?')){
+            let element = $(this)[0].parentElement.parentElement;
+            let id = $(element).attr('taskId');
+                $.post('task-delete.php', {id}, function (response) {
+                console.log(response);
+                fetchTasks();
+                })
+        }
+    })
 });
