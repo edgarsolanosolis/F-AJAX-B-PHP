@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#task-result').hide();
+    fetchTasks();
 
     $('#search').keyup(function(e){
         if($('#search').val()){
@@ -32,11 +33,31 @@ $(document).ready(function() {
             description: $('#description').val()
         };
         $.post('task-add.php', postData, function (response){
-            console.log(response);
+            fetchTasks();
 
             $('#task-form').trigger('reset');
         });
         e.preventDefault();
     });
 
+    function fetchTasks(){
+        $.ajax({
+            url: 'task-list.php',
+            type: 'GET',
+            success: function (response){
+                let tasks = JSON.parse(response);
+                let template = '';
+                tasks.forEach(task => {
+                    template += `
+                        <tr>
+                            <td>${task.id}</td>
+                            <td>${task.name}</td>
+                            <td>${task.description}</td>
+                        </tr>
+                    `
+                });
+                $('#tasks').html(template);
+            }
+        });
+    }
 });
