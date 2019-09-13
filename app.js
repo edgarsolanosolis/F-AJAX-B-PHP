@@ -31,7 +31,11 @@ $(document).ready(function() {
             name: $('#name').val(),
             description: $('#description').val()
         };
-        console.log(postData)
+        $.post('task-add.php', postData, function (response){
+            console.log(response);
+
+            $('#task-form').trigger('reset');
+        });
         e.preventDefault();
     });
 
