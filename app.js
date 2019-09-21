@@ -51,7 +51,9 @@ $(document).ready(function() {
                     template += `
                         <tr taskId="${task.id}">
                             <td>${task.id}</td>
-                            <td>${task.name}</td>
+                            <td>
+                                <a href="#" class= "task-item">${task.name}</a>
+                            </td>
                             <td>${task.description}</td>
                             <td>
                                 <button class="task-delete btn btn-danger">
@@ -70,9 +72,19 @@ $(document).ready(function() {
             let element = $(this)[0].parentElement.parentElement;
             let id = $(element).attr('taskId');
                 $.post('task-delete.php', {id}, function (response) {
-                console.log(response);
+    //           console.log(response);
                 fetchTasks();
                 })
         }
-    })
+    });
+    $(document).on('click', '.task-item', function() {
+        let element = $(this)[0].parentElement.parentElement;
+        let id = $(element).attr('taskId');
+        $.post('task-single.php', {id}, function(response){
+    //           console.log(response);
+            const tareas = JSON.parse(response);
+            $('#name').val(tareas.name);
+            $('#description').val(tareas.description);
+        })
+    });
 });
